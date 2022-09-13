@@ -3,7 +3,10 @@ const express = require("express");
 const dotenv = require("dotenv").config(); //Loads .env from home dir
 const { errorHandler } = require("./middleware/errorMiddleware"); //Loads error handler
 
+const connectDB = require("./config/db");
 const port = process.env.PORT || 5000; // Loads PORT from .env
+
+connectDB();
 
 const app = express(); // Assigning variable to express library
 
