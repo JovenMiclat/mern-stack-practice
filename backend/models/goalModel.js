@@ -10,4 +10,4 @@ const goalSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Goal", goalSchema);
+module.exports = mongoose.model("goals", goalSchema, "goals"); //first argument: name, second argument: schema in code, third argument: collection name
