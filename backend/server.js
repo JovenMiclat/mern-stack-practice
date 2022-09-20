@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 // Body parsers
 
 app.use("/api/goals", require("./routes/goalRoutes")); //using API and requiring a file that imports a controller
+app.use("/api/users", require("./routes/userRoutes")); //using API and requiring a file that imports a controller
 
 app.use(errorHandler); //Uses errorMiddleware.js
 

@@ -7,12 +7,14 @@ const {
   deleteGoal, //delete
 } = require("../controllers/goalController"); //get exports from goalController.js
 
+const { protect } = require("../middleware/authMiddleware");
+
 // Sample Requests
-router.route("/").post(createGoal).get(readGoals); //Create and Read (Clean code)
+router.route("/").post(protect, createGoal).get(protect, readGoals); //Create and Read (Clean code)
 // router.post("/", createGoal); //create
 // router.get("/", readGoals); //read
 
-router.route("/:id").put(updateGoal).delete(deleteGoal); //Update and Delete (Clean code)
+router.route("/:id").put(protect, updateGoal).delete(protect, deleteGoal); //Update and Delete (Clean code)
 // router.put("/:id", updateGoal); //update
 // router.delete("/:id", deleteGoal); //delete
 

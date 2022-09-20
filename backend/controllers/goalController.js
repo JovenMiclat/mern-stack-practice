@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler"); //To not use the try-catch, we can use this library
 
-const Goals = require("../models/goalModel"); // imports goalModel.js which represents the Collection from mongoDB
+const Goals = require("../models/goalModel"); // imports goalModel.js which represents the Goals Collection from mongoDB
+const Users = require("../models/userModel"); // imports userModel.js which represents the Users Collection from mongoDB
+//Also imported since Users is now part of goalModel.js
 
 // @desc Create goals
 // @route POST /api/goals
@@ -16,6 +18,7 @@ const createGoal = asyncHandler(async (req, res) => {
   const goal = await Goals.create({
     // function that saves to goals collection
     text: req.body.text,
+    user: req.user.id, // Goals binded with user ID
   });
 
   res.status(200).json(goal); // response for successfully executing and displaying what was created.
@@ -25,7 +28,7 @@ const createGoal = asyncHandler(async (req, res) => {
 // @route GET /api/goals
 // @access Private
 const readGoals = asyncHandler(async (req, res) => {
-  const goals = await Goals.find(); // function that reads from goals collection
+  const goals = await Goals.find({ user: req.user.id }); // function that reads from goals collection. UPD: gets goals from user logged in through token
   res.status(200).json({ goals }); // response for successfully reading/getting goals and displaying it all.
 });
 
@@ -37,6 +40,21 @@ const updateGoal = asyncHandler(async (req, res) => {
   if (!goal) {
     res.status(400);
     throw new Error("Goal not found.");
+  }
+
+  //Checks if there's a logged in user and uses it's ID to scan the provided goal ID
+  const user = await Users.findById(req.user.id);
+
+  //Check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  //Make sure the logged in user matches the goal user
+  if (goal.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
 
   const updatedGoal = await Goals.findByIdAndUpdate(req.params.id, req.body, {
@@ -55,6 +73,21 @@ const deleteGoal = asyncHandler(async (req, res) => {
   if (!goal) {
     res.status(400);
     throw new Error("Goal not found.");
+  }
+
+  //Checks if there's a logged in user and uses it's ID to scan the provided goal ID
+  const user = await Users.findById(req.user.id);
+
+  //Check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  //Make sure the logged in user matches the goal user
+  if (goal.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
 
   await goal.remove(); // function that deletes the goal that was found with its id.
