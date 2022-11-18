@@ -1,0 +1,31 @@
+.header {
+  @apply px-5;
+}
+
+.nav {
+  @apply flex flex-col items-center sm:flex-row sm:justify-between mt-3 sm:mt-0;
+}
+
+.ul {
+  @apply w-5/6 sm:w-auto;
+
+  .li {
+    @apply flex justify-center sm:inline-block cursor-pointer my-3 py-3 sm:border-none border border-pink-200;
+
+    &:hover {
+      @apply transition ease-out bg-pink-400 text-neutral-100 sm:bg-transparent sm:text-pink-400;
+    }
+
+    &:nth-child(1) {
+      @apply sm:pr-10;
+    }
+
+    svg {
+      @apply hidden sm:inline sm:mr-2;
+    }
+  }
+}
+
+.hr {
+  @apply rounded-lg h-[3px] w-full bg-gradient-to-r to-blue-600 from-pink-700 mt-5 sm:mt-0;
+}

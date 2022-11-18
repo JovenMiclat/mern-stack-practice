@@ -1,0 +1,14 @@
+.form__div__outer {
+  @apply w-10/12 h-auto mx-auto mt-10 bg-gradient-to-tr from-violet-500 to-pink-700 p-1 sm:max-w-lg;
+}
+
+.form__div__inner {
+  @apply h-full bg-zinc-900 text-white p-4 flex flex-col items-center;
+}
+
+.btn {
+  @apply my-5 border-pink-300 border;
+  &:hover {
+    @apply transition ease-out bg-pink-400 text-neutral-100;
+  }
+}
