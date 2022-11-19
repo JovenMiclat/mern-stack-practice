@@ -2,11 +2,7 @@ import cx from "./Footer.module.scss";
 import Link from "next/link";
 import { NextPage } from "next";
 
-interface Props {
-  className?: any;
-}
-
-const Footer: NextPage<Props> = () => {
+const Footer = () => {
   return (
     <footer className={cx.footer}>
       <div className={cx.footer__hr}></div>

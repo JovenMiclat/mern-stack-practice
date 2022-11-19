@@ -1,12 +1,12 @@
 import { NextPage } from "next";
 import cx from "./card.module.scss";
 
-interface Props {
+type Props = {
   title: string;
   desc: string;
-}
+};
 
-const card: NextPage<Props> = ({ title, desc }) => {
+const card = ({ title, desc }: Props) => {
   return (
     <div className={cx.card}>
       <div className={cx.card__outer}>

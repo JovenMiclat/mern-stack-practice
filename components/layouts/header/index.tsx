@@ -1,5 +1,5 @@
 import cx from "./Header.module.scss";
-import { FaUser, FaSignInAlt } from "react-icons/fa";
+import { AiOutlineLogin, AiOutlineUser, AiOutlineLogout } from "react-icons/ai";
 import Logo from "../../ui/logo";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ const Header = () => {
           <Link href="/login">
             <li className={cx.li}>
               <span className={cx.links}>
-                <FaSignInAlt />
+                <AiOutlineLogin />
                 LOGIN
               </span>
             </li>
@@ -21,7 +21,7 @@ const Header = () => {
           <Link href="/register">
             <li className={cx.li}>
               <span className={cx.links}>
-                <FaUser />
+                <AiOutlineUser />
                 REGISTER
               </span>
             </li>

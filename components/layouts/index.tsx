@@ -1,15 +1,14 @@
-import { NextPage } from "next";
 import Link from "next/link";
 import Header from "./header";
 import Footer from "./footer";
 import Head from "next/head";
 import "animate.css";
 
-interface Props {
+type Props = {
   children: any;
-}
+};
 
-const Layout: NextPage<Props> = ({ children }) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Head>

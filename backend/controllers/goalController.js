@@ -8,16 +8,23 @@ const Users = require("../models/userModel"); // imports userModel.js which repr
 // @route POST /api/goals
 // @access Private
 const createGoal = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  const { title, description } = req.body; //from api request (postman)
+  if (!title) {
     //body.key
     res.status(400);
-    throw new Error("Please add a text field");
+    throw new Error("Please add a title");
+  }
+  if (!description) {
+    //body.key
+    res.status(400);
+    throw new Error("Please add a description");
   }
   // console.log(req.body);
 
   const goal = await Goals.create({
     // function that saves to goals collection
-    text: req.body.text,
+    title,
+    description,
     user: req.user.id, // Goals binded with user ID
   });
 

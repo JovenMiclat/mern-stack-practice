@@ -1,7 +1,9 @@
 import cx from "./Dashboard.module.scss";
 import Card from "../../components/ui/card";
+import goals from "../goals/goals";
+import { NextPage } from "next";
 
-const Dashboard = () => {
+const Dashboard: NextPage = () => {
   return (
     <div className="w-11/12 mx-auto">
       <h1 className="text-3xl font-semibold mt-5">GOALS</h1>
@@ -18,12 +20,9 @@ const Dashboard = () => {
             ullamcorper euismod sem. Nullam diam justo, lacinia eget molestie
             eu, volutpat egestas nunc. Etiam dignissim ligula id auctor feugiat.
             Etiam quis lacus facilisis, dictum mi vitae, tincidunt leo. */}
-
-        <Card title="Goal 1" desc="Bruh" />
-        <Card title="Goal 1" desc="Bruh" />
-        <Card title="Goal 1" desc="Bruh" />
-        <Card title="Goal 1" desc="Bruh" />
-        <Card title="Goal 1" desc="Bruh" />
+        {goals.map((goals) => {
+          return <Card key={goals.id} title={goals.title} desc={goals.desc} />;
+        })}
       </div>
     </div>
   );

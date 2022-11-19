@@ -1,4 +1,4 @@
-// authMiddleware.js to protect user credentials (needed for user-specific content)
+// authMiddleware.js to protect user credentials (needed for user-specific content; provides token each login)
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
