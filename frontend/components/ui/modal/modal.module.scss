@@ -1,0 +1,27 @@
+.modal__overlay {
+  @apply absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-black bg-opacity-70 flex justify-center items-center;
+}
+
+.modal__border {
+  @apply w-11/12 sm:w-8/12 md:w-6/12 lg:w-4/12 bg-zinc-800 rounded-lg text-zinc-200;
+}
+
+.modal__close {
+  @apply cursor-pointer mr-3 mt-3 rounded-full border-black;
+}
+
+.modal__input {
+  @apply mt-3 p-1 bg-transparent border border-neutral-400 text-white rounded-lg resize-none;
+}
+
+.modal_form_title {
+  @apply flex justify-center p-5 -mt-5 border-b-2 border-zinc-200;
+
+  h1 {
+    @apply text-3xl font-bold;
+  }
+}
+
+.modal__button {
+  @apply flex items-center px-2 py-2 border rounded-xl hover:bg-pink-500 transition ease-out;
+}

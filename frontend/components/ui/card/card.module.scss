@@ -1,0 +1,45 @@
+.card {
+  @apply cursor-pointer mt-4;
+}
+
+.card__outer {
+  @apply w-44 h-52 bg-gradient-to-tr from-violet-500 to-pink-700 p-1 sm:max-w-[200px] sm:max-h-72  rounded-lg;
+}
+
+.card__inner {
+  @apply h-full bg-zinc-900 text-white rounded-lg overflow-hidden overflow-y-auto;
+  &::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    @apply bg-zinc-500;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-700;
+  }
+}
+
+.card__date {
+  @apply text-[10px] text-end mr-2 mt-1;
+}
+
+.card__title {
+  @apply whitespace-nowrap text-ellipsis overflow-hidden text-xl p-3 -mt-2;
+}
+
+.card__line {
+  @apply w-10/12 mx-auto h-1 bg-gradient-to-tr from-violet-500 to-pink-700 rounded-lg;
+}
+
+.card__desc {
+  @apply p-3 overflow-y-auto overflow-x-hidden break-words;
+}
