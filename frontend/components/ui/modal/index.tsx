@@ -25,10 +25,12 @@ const Modal = ({ modalType, modal }: Props) => {
   const { title, description } = formData;
   const dispatch = useAppDispatch();
   const { goal } = useAppSelector((state) => state.modal);
+  // @ts-ignore
   const _id = goal._id;
 
   useEffect(() => {
     if (modalType === "updateGoal" || goal) {
+      // @ts-ignore
       setFormData({ ...goal });
     }
 
@@ -183,6 +185,7 @@ const Modal = ({ modalType, modal }: Props) => {
                 <button
                   className={"mr-4 " + cx.modal__button}
                   onClick={() => {
+                    // @ts-ignore
                     dispatch(deleteGoal(goal._id));
                     dispatch(closeModal());
                   }}

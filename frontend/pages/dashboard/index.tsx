@@ -31,6 +31,7 @@ const Dashboard = () => {
     if (!user) {
       router.push("/login");
     }
+
     if (user) {
       dispatch(readGoals());
     }

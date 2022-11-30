@@ -1,4 +1,5 @@
 // imports
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv").config(); //Loads .env from home dir
 const { errorHandler } = require("./middleware/errorMiddleware"); //Loads error handler
@@ -25,6 +26,19 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/goals", require("./routes/goalRoutes")); //using API and requiring a file that imports a controller
 app.use("/api/users", require("./routes/userRoutes")); //using API and requiring a file that imports a controller
+
+//Serve frontend
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/out")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../", "frontend", "out", "index.html")
+    )
+  );
+} else {
+  app.get("/", (req, res) => res.send("Please set to production."));
+}
 
 app.use(errorHandler); //Uses errorMiddleware.js
 
