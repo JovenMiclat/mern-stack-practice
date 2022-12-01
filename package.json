@@ -2,9 +2,13 @@
   "name": "mern-stack-practice",
   "version": "1.0.0",
   "description": "INAGA, First MENN Stack",
+  "main": "./api/index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node ./api/index.js",
+    "server": "nodemon ./api/index.js",
     "client": "npm run dev --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "vercel-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
